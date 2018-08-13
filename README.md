@@ -11,3 +11,4 @@ Please do not expect:
     A proper user-facing API
     Any technical support from me
 
+* Note: to make development easier, symlink this project to C:\Python\Lib\sites-available on windows or /usr/local/lib/python on Unix.
