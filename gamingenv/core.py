@@ -3,7 +3,7 @@ from helper import *
 class Player:
 
     def __init__(self):
-        print "initializing player"
+        print "Initializing " + str(Util().get_key("bcim.json", "name"))
 
     def permhp(self, amt):
         Util().increment_key("class.json", "max hp", amt)
@@ -12,11 +12,11 @@ class Player:
         Util().increment_key("class.json", "current hp", amt)
 
     def ki(self):
-        Util().increment_key("class.json","level", 2)
+        Util().increment_key("class.json", "level", 2)
         Util().increment_key("class.json", "thaco", -2)
     
     def unki(self):
-        Util().increment_key("class.json","level", -2)
+        Util().increment_key("class.json", "level", -2)
         Util().increment_key("class.json", "thaco", 2)  
     
     def whoami(self):
@@ -36,7 +36,7 @@ class Player:
     def ouch(self, dmg):
         Util().increment_key("class.json", "current hp", ((-1)*dmg))
 
-    def cash(self, key, amt):
+    def bank(self, key, amt):
         Util().increment_key("bcim.json", key, amt)
     
     def exp(self, amt):
@@ -76,7 +76,7 @@ class Player:
     def cmd(self):
         print "====================Commands===================="
 
-        commands = ["whoami()", "cash('currency', amt)", "exp(amt)", "ouch(amt)", "hit(enemyAC)", "addhp(amt)", "permhp(amt)", "ki()", "unki()", "who()", "saves()", "levelup()", "setac(AC)", "meet()", "addmeet('person', 'blurb')", "pack()", "additem('item', 'desc')", "remitem('item')", "pay('currency', amt)"]
+        commands = ["whoami", "bank <currency> <amt>", "exp <amt>", "ouch <amt>", "hit <enemyAC>", "addhp <amt>", "permhp <amt>", "ki", "unki", "who", "saves", "levelup", "setac <baseac>", "meet", "addmeet <person> <blurb>", "pack", "additem <item> <desc>", "remitem <item>", "pay <currency> <amt>"]
 
         for x in commands:
             print x
