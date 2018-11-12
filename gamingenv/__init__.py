@@ -1,3 +1,3 @@
 from core import *
 
-player=Player()
+player=Player('naganori')

@@ -1,82 +1,97 @@
 from helper import *
 
 class Player:
+    util = None
 
-    def __init__(self):
-        print "Initializing " + str(Util().get_key("bcim.json", "name"))
+    def __init__(self, player):
+        global util
+        util = Util(player)
+        print "Initializing " + str(util.get_key("bcim.json", "name"))
+
+    def addhonor(self, amt):
+        util.increment_key("bcim.json", "honor", amt)
 
     def permhp(self, amt):
-        Util().increment_key("class.json", "max hp", amt)
+        util.increment_key("class.json", "max hp", amt)
 
     def addhp(self, amt):
-        Util().increment_key("class.json", "current hp", amt)
+        util.increment_key("class.json", "current hp", amt)
 
     def ki(self):
-        Util().increment_key("class.json", "level", 2)
-        Util().increment_key("class.json", "thaco", -2)
+        util.increment_key("class.json", "level", 2)
+        util.increment_key("class.json", "thaco", -2)
     
     def unki(self):
-        Util().increment_key("class.json", "level", -2)
-        Util().increment_key("class.json", "thaco", 2)  
+        util.increment_key("class.json", "level", -2)
+        util.increment_key("class.json", "thaco", 2)  
     
     def whoami(self):
         print
-        print "\t" + str(Util().get_key("bcim.json", "name"))
-        print "\tLevel: " + str(Util().get_key("class.json", "level")) + " Exp: " + str(Util().get_key("class.json", "exp")) + "/" + str(Util().get_key("class.json", "next level"))
-        print "\tHonor: " + str(Util().get_key("bcim.json", "honor")) + " Tael: " + str(Util().get_key("bcim.json", "tael"))
-        print "\t\tHP: " + str(Util().get_key("class.json", "current hp")) + "/" + str(Util().get_key("class.json", "max hp")) +  " Status: " +  str(Util().get_key("class.json", "status"))
-        print "\t\t+" + str(Util().compute_tohit()) + " HIT/ +" + str(Util().compute_damage()) + " DMG"
-        print "\t\tAC: " + str(Util().get_key("class.json", "base ac"))
-        print "\t\tthAC0: " + str(Util().get_key("class.json", "thaco"))
+        print "\t" + str(util.get_key("bcim.json", "name"))
+        print "\tLevel: " + str(util.get_key("class.json", "level")) + " Exp: " + str(util.get_key("class.json", "exp")) + "/" + str(util.get_key("class.json", "next level"))
+        print "\tHonor: " + str(util.get_key("bcim.json", "honor")) + " Tael: " + str(util.get_key("bcim.json", "tael"))
+        print "\t\tHP: " + str(util.get_key("class.json", "current hp")) + "/" + str(util.get_key("class.json", "max hp")) +  " Status: " +  str(util.get_key("class.json", "status"))
+        print "\t\t+" + str(util.compute_tohit()) + " HIT/ +" + str(util.compute_damage()) + " DMG"
+        print "\t\tAC: " + str(util.get_key("class.json", "base ac"))
+        print "\t\tthAC0: " + str(util.get_key("class.json", "thaco"))
         print
         
     def hit(self, enemyac):
-        print "Roll a " + str(Util().get_key("class.json", "thaco")-enemyac-Util().compute_tohit())
+        print "Roll a " + str(util.get_key("class.json", "thaco")-enemyac-util.compute_tohit())
 
     def ouch(self, dmg):
-        Util().increment_key("class.json", "current hp", ((-1)*dmg))
+        util.increment_key("class.json", "current hp", ((-1)*dmg))
 
     def bank(self, key, amt):
-        Util().increment_key("bcim.json", key, amt)
+        util.increment_key("bcim.json", key, amt)
     
     def exp(self, amt):
-        Util().increment_key("class.json", "exp", amt)
+        util.increment_key("class.json", "exp", amt)
     
     def who(self):
-        Util().print_full()
+        util.print_full()
     
     def saves(self):
-        Util().print_saves()    
+        util.print_saves()    
     
     def levelup(self):
-        Util().increment_key("class.json","level", 1)
-        Util().increment_key("class.json","thaco", -1)
+        util.increment_key("class.json","level", 1)
+        util.increment_key("class.json","thaco", -1)
     
     def setac(self, ac):
-        Util().set_key("class.json", "base ac", ac)
+        util.set_key("class.json", "base ac", ac)
 
     def meet(self):
-        Util().print_encounters()
+        util.print_encounters()
     
     def addmeet(self, key, blurb):
-        Util().add_encounter(key, blurb)
+        util.add_encounter(key, blurb)
+
+    def remmeet(self, key):
+        util.rem_encounter(key)
 
     def pack(self):
-        Util().print_pack()
+        util.print_pack()
     
     def additem(self, key, blurb):
-        Util().add_packitem(key, blurb)
+        util.add_packitem(key, blurb)
 
     def remitem(self, key):
-        Util().rem_packitem(key)
+        util.rem_packitem(key)
 
     def pay(self, key, amt):
-        Util().increment_key("bcim.json", key, ((-1)*amt))
+        util.increment_key("bcim.json", key, ((-1)*amt))
+    
+    def createchar(self):
+        util.create_character()
+    
+    def switchchar(self, who):
+        self.__init__(who)
 
     def cmd(self):
         print "====================Commands===================="
 
-        commands = ["whoami", "bank <currency> <amt>", "exp <amt>", "ouch <amt>", "hit <enemyAC>", "addhp <amt>", "permhp <amt>", "ki", "unki", "who", "saves", "levelup", "setac <baseac>", "meet", "addmeet <person> <blurb>", "pack", "additem <item> <desc>", "remitem <item>", "pay <currency> <amt>"]
+        commands = ["whoami", "bank <currency> <amt>", "exp <amt>", "ouch <amt>", "hit <enemyAC>", "addhp <amt>", "permhp <amt>", "ki", "unki", "who", "saves", "levelup", "setac <baseac>", "meet", "addmeet <person> <blurb>", "remmeet <person>","pack", "additem <item> <desc>", "remitem <item>", "create","addhonor <amt>", "switch <character>", "pay <currency> <amt>"]
 
         for x in commands:
             print x
