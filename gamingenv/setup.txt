@@ -1,0 +1,24 @@
+navigate to pyenv folder and start python. paste in the following code to bind player functions to commands
+
+
+import gamingenv as g
+p=g.player
+whoami=p.whoami
+cmd=p.cmd
+cash=p.cash
+ouch=p.ouch
+hit=p.hit
+addhp=p.addhp
+permhp=p.permhp
+ki=p.ki
+unki=p.unki
+who=p.who
+saves=p.saves
+levelup=p.levelup
+setac=p.setac
+meet=p.meet
+addmeet=p.addmeet
+pack=p.pack
+additem=p.additem
+remitem=p.remitem
+pay=p.pay

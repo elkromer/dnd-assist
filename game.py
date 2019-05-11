@@ -9,82 +9,60 @@ clear = lambda: system('cls')
 
 while True:
     
-    commands = ["whoami","bank","exp","ouch","hit","addhp","permhp","ki","unki","who","saves","levelup","setac","meet","addmeet", "remmeet","pack","additem","remitem", "addhonor", "pay", "cmd", "clear", "create", "switch","exit"]
+    commands = ["whoami","bank","exp","ouch","hit","addhp","permhp","ki","unki","who","saves","levelup","setac","meet","addmeet","pack","additem","remitem","pay", "cmd", "clear", "exit"]
 
     raw = raw_input("#> ")
-    
-    try:
-        cmd = raw[0:raw.index(" ")]
-    except ValueError:
-        cmd = raw
-    try:
-        arglist = raw[raw.index(" ")+1:]
-    except ValueError:
-        arglist = ""   
 
-    if (cmd in commands):
-    
-        if cmd == "whoami":
+    args = raw.split(" ")
+
+    if (args[0] in commands):
+        command = args[0]
+
+        if command == "whoami":
             p.whoami()
-        elif cmd == "bank":
-            key = arglist[0:arglist.index(" ")]
-            amt = arglist[arglist.index(" ")+1:]
-            p.bank(key, int(amt))
-        elif cmd == "exp":
-            p.exp(int(arglist))
-        elif cmd == "ouch":
-            p.ouch(int(arglist))
-        elif cmd == "hit":
-            p.hit(int(arglist))
-        elif cmd == "addhp":
-            p.addhp(int(arglist))
-        elif cmd == "permhp":
-            p.permhp(int(arglist))
-        elif cmd == "ki":
+        elif command == "bank":
+            p.bank(args[1], int(args[2]))
+        elif command == "exp":
+            p.exp(int(args[1]))
+        elif command == "ouch":
+            p.ouch(int(args[1]))
+        elif command == "hit":
+            p.hit(int(args[1]))
+        elif command == "addhp":
+            p.addhp(int(args[1]))
+        elif command == "permhp":
+            p.permhp(int(args[1]))
+        elif command == "ki":
             p.ki()
-        elif cmd == "unki":
+        elif command == "unki":
             p.unki()
-        elif cmd == "addhonor":
-            p.addhonor(int(arglist))
-        elif cmd == "who":
+        elif command == "who":
             p.who()
-        elif cmd == "saves":
+        elif command == "saves":
             p.saves()
-        elif cmd == "levelup":
+        elif command == "levelup":
             p.levelup()
-        elif cmd == "setac":
-            p.setac(int(arglist))
-        elif cmd == "meet":
+        elif command == "setac":
+            p.setac(int(args[1]))
+        elif command == "meet":
             p.meet()
-        elif cmd == "addmeet":
-            name = arglist[0:arglist.index(" ")]
-            desc = arglist[arglist.index(" ")+1:]
-            p.addmeet(name, desc)
-            print "Added entry for " + name
-        elif cmd == "remmeet":
-            p.remmeet(arglist)  
-            print "Removed entry for " + arglist          
-        elif cmd == "pack":
+        elif command == "addmeet":
+            meet_name = args[1]
+            meet_desc = raw_input("description #>")
+            p.addmeet(meet_name, meet_desc)
+        elif command == "pack":
             p.pack()
-        elif cmd == "additem":
-            item = arglist[0:arglist.index(" ")]
-            desc = arglist[arglist.index(" ")+1:]
-            p.additem(item, desc)
-            print "Added entry for " + item
-        elif cmd == "remitem":
-            p.remitem(arglist)
-            print "Removed entry for " + arglist
-        elif cmd == "pay":
-            curr=arglist[0:arglist.index(" ")]
-            amt=int(arglist[arglist.index(" ")+1:])
-            p.pay(curr, amt)
-        elif cmd == "create":
-            p.createchar()
-        elif cmd == "switch":
-            p.switchchar(arglist)
-        elif cmd == "exit":
+        elif command == "additem":
+            item_name = args[1]
+            item_desc = raw_input("description #> ")
+            p.additem(item_name, item_desc)
+        elif command == "remitem":
+            p.remitem(args[1])
+        elif command == "pay":
+            p.pay(args[1], int(args[2]))
+        elif command == "exit":
             exit(0)
-        elif cmd == "clear":
+        elif command == "clear":
             clear()
         else:
             p.cmd()
