@@ -1,0 +1,15 @@
+{
+    "Ring of Protection": "+1 to AC and saving throws (requires attunement)", 
+    "Magic Breastplate": "+1 to AC Breastplate that form-fits any user; weighs 15lbs (not the normal 20lbs); & conveys resistance to dragon's breath", 
+    "Cloak of Protection": "+1 to AC and saving throws (requires attunement)", 
+    "Torch": 10, 
+    "Whoop Ass": 6, 
+    "Sealing Wax": "seals stuff up", 
+    "Jeweler's Tools": "Training includes ability to beautify gems and identify precious stones", 
+    "Scimitar": "+7 to hit, does 1d6 + 4", 
+    "Hand Crossbow": "+7 to hit, does 1d6 + 4. Can be used as a bonus action for a third attack when using melee weapon (requires attunement)", 
+    "Walloping Bolts": 1, 
+    "Piton": 10, 
+    "Bronze Griffon Statuette": "Turns into a griffon for 6 hours. Once it has been used, it cannot be used again until 5 days have passed. AC 12, HP 68, speed 30ft, fly 80ft, darkvision 60ft, perception 15, advantage on wisdom checks that rely on sight. Actions: Multiattack (beak+claws), Beak (+6 hit, 1d8+4 piercing dmg, 5ft reach), Claws (+6 hit, 2d6+4 slashing dmg, 5ft reach)", 
+    "Crowbar": "Advantage to strength checks"
+}

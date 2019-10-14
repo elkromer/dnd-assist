@@ -33,6 +33,14 @@ class Util:
             json.dump(data, infile, indent=4)
             infile.truncate()     # remove remaining part        
 
+    def add_limiteditem(self, key, blurb):
+        with open('resources/' + my_self + '/pack.json', 'r+') as infile:
+            data = json.load(infile)
+            data[key] = blurb 
+            infile.seek(0)        # <--- should reset file position to the beginning.
+            json.dump(data, infile, indent=4)
+            infile.truncate()     # remove remaining part  
+    
     def print_encounters(self):
         print "================================Encounters=========================================="
         with open('resources/' + my_self + '/encounters.json') as infile:    
@@ -40,7 +48,7 @@ class Util:
         for key in data.keys():
             print key + ": " + str(data[key])     
         print "===================================================================================="
-
+    
     def add_encounter(self, key, blurb):
         with open('resources/' + my_self + '/encounters.json', 'r+') as infile:
             data = json.load(infile)
@@ -48,6 +56,54 @@ class Util:
             infile.seek(0)        # <--- should reset file position to the beginning.
             json.dump(data, infile, indent=4)
             infile.truncate()     # remove remaining part    
+
+    def print_spells(self):
+        print "================================Spells=========================================="
+        with open('resources/' + my_self + '/spells.json') as infile:    
+            data = json.load(infile)  
+        for key in data.keys():
+            print key + ": " + str(data[key]) + "\n"     
+        print "===================================================================================="
+    
+    def add_spell(self, key, blurb):
+        with open('resources/' + my_self + '/spells.json', 'r+') as infile:
+            data = json.load(infile)
+            data[key] = blurb 
+            infile.seek(0)        # <--- should reset file position to the beginning.
+            json.dump(data, infile, indent=4)
+            infile.truncate()     # remove remaining part 
+
+    def rem_spell(self, key):
+        with open('resources/' + my_self + '/spells.json', 'r+') as infile:
+            data = json.load(infile)
+            del data[key]
+            infile.seek(0)        # <--- should reset file position to the beginning.
+            json.dump(data, infile, indent=4)
+            infile.truncate()     # remove remaining part 
+
+    def print_feats(self):
+        print "================================Feats=========================================="
+        with open('resources/' + my_self + '/feats.json') as infile:    
+            data = json.load(infile)
+        for key in data.keys():
+            print key + ": " + str(data[key]) + "\n"
+        print "===================================================================================="
+    
+    def add_feat(self, key, blurb):
+        with open('resources/' + my_self + '/feats.json', 'r+') as infile:
+            data = json.load(infile)
+            data[key] = blurb 
+            infile.seek(0)        # <--- should reset file position to the beginning.
+            json.dump(data, infile, indent=4)
+            infile.truncate()     # remove remaining part 
+
+    def rem_feat(self, key):
+        with open('resources/' + my_self + '/feats.json', 'r+') as infile:
+            data = json.load(infile)
+            del data[key]
+            infile.seek(0)        # <--- should reset file position to the beginning.
+            json.dump(data, infile, indent=4)
+            infile.truncate()     # remove remaining part 
 
     def rem_encounter(self, key):
         with open('resources/' + my_self + '/encounters.json', 'r+') as infile:
@@ -65,9 +121,14 @@ class Util:
             print key + ": " + str(data[key])
         print "===================================================================================="
 
-    def print_full(self):
+    def print_full(self, edition):
         print
-        filenames = ["bcim.json", "class.json", "saves.json", "stats.json"]
+
+        # TODO Get this extra code out of here
+        if (edition == 2):
+            filenames = ["bcim.json", "class.json", "saves.json", "stats.json"]
+        else:
+            filenames = ["bcim.json", "class.json", "saves.json", "skills.json"]
 
         for name in filenames:
             with open('resources/' + my_self + '/' + name) as infile:    
@@ -100,8 +161,10 @@ class Util:
     def get_key(self, filename, key):
         with open('resources/' + my_self + '/' + filename) as infile:    
             data = json.load(infile)  
+        
+        value = data[key]
 
-        return data[key]      
+        return value    
 
     def increment_key(self, filename, key, increment):
         with open('resources/' + my_self + '/' + filename) as infile:    
