@@ -1,6 +1,6 @@
 {
     "common sword": "common short sword", 
-    "shiny shiv": "rings shine in the light, stick it in a tree to see where from you came", 
+    "shield": "-1 modifier to AC", 
     "hand woven bracelet": "hand woven by Eemina", 
     "potion of extra healing": "3d8 + 3 healing. permanent hp. 400exp for use", 
     "metamorphasis rune stone": "Tree spell, turn into a small tree or large tree trunk for 20 turns. Close inspection -> just a tree. 1/day", 
@@ -8,8 +8,8 @@
     "mariko": "falcon", 
     "magic talisman": "neutralize poison 1/day", 
     "divination spell": "know history. 1st level shukenja spell in OA. 1/day", 
-    "Firestone of Frost resistance": "{per 1e DMG Cube of Frost Resistance p142} - creates a 10'x10'x10' cube in which it is always 65 degrees. Can absorb up to 50 hp of cold damage per turn up to max 100hp. ", 
+    "Firestone of Frost Resistance": "Per 1e DMG Cube of Frost on p.142. Command word, the small stone emits a warm glow that creates a 10x10x10 cube in whcih it is always 65 farenheit. Can absorb 50hp of frost damage per turn up to a max of 100hp.", 
     "elemental_burst": "60 ft range. Instantaneous. Target point must be one of the five elements (fire/wood/water/air/stone). Diameter of 10ft. 1d8 to all inside range. Damage is halved if saving throw vs spell is made. ", 
     "magic chainmail": "-6 modifier to AC. No other armor can be worn. 50% normal weight. magically non-encumbering", 
-    "shield": "-1 modifier to AC"
+    "shiny shiv": "rings shine in the light, stick it in a tree to see where from you came"
 }
