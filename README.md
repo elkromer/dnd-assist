@@ -1,5 +1,5 @@
 # pyenv
-A commandline assistant for managing 2ed and 5ed dnd characters. 
+A commandline assistant for 2ed and 5ed gameplay. 
 
 Please do not expect:
 
